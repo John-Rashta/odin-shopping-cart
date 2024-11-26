@@ -43,7 +43,7 @@ function Card({name, price, image, id, addCart}) {
                     setAmount(0);
                     return;
                 }
-                addCart(amount, id);
+                addCart(amount, id, price, name);
                 setAmount(0);
                 }
             }

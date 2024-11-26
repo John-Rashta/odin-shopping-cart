@@ -1,35 +1,95 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { Card } from './components/Card';
+import { Header } from './components/Header';
+import { HomePage } from './components/HomePage';
+import { ShoppingPage } from './components/ShoppingPage';
+import { useParams } from 'react-router-dom';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [shopData, setShopData] = useState([]);
+  const [shopCart, setShopCart] = useState([]);
+
+  useEffect(() => {
+      const fetchDataForShop = async () => {
+          try {
+              const rawResponse = await fetch('https://fakestoreapi.com/products');
+              
+              if (!rawResponse.ok) {
+                  throw new Error(`HTTP error: Status ${rawResponse.status}`);
+              }
+
+              let fullData = await rawResponse.json();
+              const newData = [];
+              fullData.forEach((val) => {
+                  newData.push({...val});
+              });
+
+              setShopData(fullData);
+
+          } catch (err) {
+              console.log(err.message);
+          }
+      }
+
+      fetchDataForShop();
+  }, []);
+
+  function addToCart(amount, id, price, name) {
+      if (shopCart.some((val) => val[0] === id)) {
+          const rawCart = shopCart;
+          const newCart = rawCart.map((val) => {
+              if (val[0] === id) {
+                  return [val[0], val[1] + amount, val[2], val[3]];
+              }
+              return val;
+          });
+          setShopCart(newCart);
+          return;
+      }
+      const newCart = shopCart;
+      newCart.push([id, amount, price, name]);
+      setShopCart(newCart);
+  }
+
+  function deleteCart(id) {
+    const rawCart = shopCart;
+    const newCart = rawCart.filter((val) => val[0] !== id);
+    setShopCart(newCart);
+  }
+
+  function changeCart(id, amount) {
+    const rawCart = shopCart;
+    const newCart = rawCart.reduce((prevArr, currentItem) => {
+      if (currentItem[0] === id) {
+        if (currentItem[1] + amount <= 0) {
+          return prevArr;
+        }
+          prevArr.push([currentItem[0], currentItem[1] + amount, currentItem[2], currentItem[3]]);
+          return prevArr;
+      }
+      prevArr.push(currentItem);
+      return prevArr;
+    }, []);
+    setShopCart(newCart);
+  }
+
+  const {name} = useParams();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+        <Header data={{shopCart, shopData}} deleteCart={deleteCart} changeCart={changeCart} />
+        {
+          name === "shop" ? (
+            <ShoppingPage fullData={{shopData, shopCart}} addToCart={addToCart} />
+          ) : (
+            <HomePage fullData={{shopData, shopCart}} addToCart={addToCart} />
+          )
+        }
+
+    </div>
+    
   )
 }
 
-export default App
+export default App;
