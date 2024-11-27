@@ -40,7 +40,7 @@ function App() {
           const rawCart = shopCart;
           const newCart = rawCart.map((val) => {
               if (val[0] === id) {
-                  return [val[0], val[1] + amount, val[2], val[3]];
+                  return [val[0], Number(val[1]) + amount, val[2], val[3]];
               }
               return val;
           });
@@ -48,7 +48,7 @@ function App() {
           return;
       }
       const newCart = shopCart;
-      newCart.push([id, amount, price, name]);
+      newCart.push([id, Number(amount), price, name]);
       setShopCart(newCart);
   }
 
@@ -65,7 +65,7 @@ function App() {
         if (currentItem[1] + amount <= 0) {
           return prevArr;
         }
-          prevArr.push([currentItem[0], currentItem[1] + amount, currentItem[2], currentItem[3]]);
+          prevArr.push([currentItem[0], Number(currentItem[1]) + amount, currentItem[2], currentItem[3]]);
           return prevArr;
       }
       prevArr.push(currentItem);
