@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { MiniCard } from "./MiniCard";
-import { useState, useRef, useEffect } from 'react';
+import { useState} from 'react';
 import { MiniCardDisplay } from "./MiniCardDisplay";
 
 function Header({data, deleteCart, changeCart}) {
@@ -13,7 +12,7 @@ function Header({data, deleteCart, changeCart}) {
     return (
         <header>
             <Link to="/">Home</Link>
-            <Link to={{pathname:"/shop"}} state={data}>Shop</Link>
+            <Link to={{pathname:"/shop"}}>Shop</Link>
             <div>
                 <div onClick={() => { setVisible(!visible)}} >Show Cart</div>
                 {visible &&  

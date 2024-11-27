@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Card } from './components/Card';
 import { Header } from './components/Header';
 import { HomePage } from './components/HomePage';
 import { ShoppingPage } from './components/ShoppingPage';

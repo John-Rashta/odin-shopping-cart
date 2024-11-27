@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MiniCard } from "./MiniCard";
-import { useState, useRef, useEffect } from 'react';
+import {useRef, useEffect } from 'react';
 
 function MiniCardDisplay({data, deleteCart, changeCart, makeVisible}) {
 
