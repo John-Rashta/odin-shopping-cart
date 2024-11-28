@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Card({name, price, image, id, addCart}) {
     const [amount, setAmount] = useState(0);
@@ -24,8 +25,8 @@ function Card({name, price, image, id, addCart}) {
     return (
         <div>
             <img src={image} alt={name} width={50} />
-            <h2>{name}</h2>
-            <p>{price} </p>
+            <h3>{name}</h3>
+            <p>{price}$ </p>
             <div>
                 <button onClick={increaseAmount} >&#x25B2;</button>
                 <input
@@ -52,5 +53,13 @@ function Card({name, price, image, id, addCart}) {
     )
 
 };
+
+Card.propTypes = {
+    name: PropTypes.string,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    image: PropTypes.string,
+    addCart: PropTypes.func,
+}
 
 export {Card};

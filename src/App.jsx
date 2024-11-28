@@ -3,6 +3,8 @@ import { Header } from './components/Header';
 import { HomePage } from './components/HomePage';
 import { ShoppingPage } from './components/ShoppingPage';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+
 
 
 function App() {
@@ -76,19 +78,24 @@ function App() {
   const {name} = useParams();
 
   return (
-    <div>
+    <MainContainer>
         <Header data={{shopCart, shopData}} deleteCart={deleteCart} changeCart={changeCart} />
         {
           name === "shop" ? (
             <ShoppingPage fullData={{shopData, shopCart}} addToCart={addToCart} />
           ) : (
-            <HomePage fullData={{shopData, shopCart}} addToCart={addToCart} />
+            <HomePage/>
           )
         }
 
-    </div>
+    </MainContainer>
     
   )
 }
+
+const MainContainer = styled.div`
+  height: 100vh;
+  width: 100vw;  
+`;
 
 export default App;

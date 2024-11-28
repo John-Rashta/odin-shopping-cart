@@ -1,4 +1,5 @@
 import { Card } from "./Card";
+import PropTypes from 'prop-types';
 
 function ShoppingPage({fullData, addToCart}) {
 
@@ -17,5 +18,10 @@ function ShoppingPage({fullData, addToCart}) {
     )
 
 };
+
+ShoppingPage.propTypes = {
+    fullData: PropTypes.object,
+    addToCart: PropTypes.func,
+}
 
 export {ShoppingPage};
