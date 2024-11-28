@@ -39,6 +39,7 @@ const MiniCardStyle = styled.div`
     display: flex;
     align-items: center;
     gap: 15px;
+    justify-content: space-between;
 
 `;
 

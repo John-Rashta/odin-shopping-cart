@@ -22,7 +22,7 @@ function Header({data, deleteCart, changeCart}) {
                 <Link to="/">Home</Link>
                 <Link to={{pathname:"/shop"}}>Shop</Link>
             </LinkDiv>
-            <div>Something Shop</div>
+            <NameDiv>Something Shop</NameDiv>
             <CartContainer>
                 <LinkDiv className="showCartButton" onClick={() => {setVisible(!visible)}} >
                     <Icon className="showCartButton" path={mdiCart} size={1} />
@@ -60,6 +60,10 @@ const LinkDiv = styled.div`
 
 const CartContainer = styled.div`
     position: relative;
+`;
+
+const NameDiv = styled.div`
+    font-size: 1.5rem;
 `;
 
 export {Header};

@@ -24,12 +24,12 @@ function MiniCardDisplay({data, deleteCart, changeCart, makeVisible}) {
 
     return (
         <MiniCardContainer ref={cartRef} >
-            <div className="cartList">
+            <CartContainer className="cartList">
             { data.shopCart.length > 0 ? data.shopCart.map((val) => {
                 return <MiniCard key={val[0]} deleteCart={deleteCart} changeCart={changeCart} id={val[0]} quantity={val[1]} price={Number(val[2])} name={val[3]} />
             }  ) : "No Items"
             }
-            </div>
+            </CartContainer>
             <TotalContainer>{data.shopCart.length > 0 && data.shopCart.reduce((lastVal, val) => {
                 return lastVal + (val[1] * Number(val[2]));
             }, 0).toFixed(2) + "$" } </TotalContainer>
@@ -48,8 +48,12 @@ MiniCardDisplay.propTypes = {
 }
 
 const MiniCardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     position: absolute;
     right: 0;
+    gap: 10px;
+    padding-top: 10px;
 
 `;
 
@@ -64,5 +68,10 @@ const CheckoutContainer = styled.div`
 `;
 
 const CheckoutButton= styled.button`
+`;
+
+const CartContainer = styled.div`
+    text-align: center;
+
 `;
 export {MiniCardDisplay};

@@ -95,7 +95,8 @@ function App() {
 
 const MainContainer = styled.div`
   height: 100vh;
-  width: 100vw;  
+  width: 100%;
+  overflow-x:hidden;
 `;
 
 export default App;
