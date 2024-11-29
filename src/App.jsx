@@ -94,9 +94,10 @@ function App() {
 }
 
 const MainContainer = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  overflow-x:hidden;
+  min-height: 100vh;
+  background-color: #fbcfe8;
 `;
 
 export default App;

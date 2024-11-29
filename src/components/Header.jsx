@@ -19,8 +19,8 @@ function Header({data, deleteCart, changeCart}) {
     return (
         <MainHeader>
             <LinkDiv>
-                <Link to="/">Home</Link>
-                <Link to={{pathname:"/shop"}}>Shop</Link>
+                <Link style={{color: "#1d4ed8"}} to="/">Home</Link>
+                <Link style={{color: "#1d4ed8"}} to={{pathname:"/shop"}}>Shop</Link>
             </LinkDiv>
             <NameDiv>Something Shop</NameDiv>
             <CartContainer>
@@ -56,14 +56,19 @@ const LinkDiv = styled.div`
     gap: 10px;
     align-items: center;
     user-select: none;
+    font-size: 1.5rem;
+    
 `;
 
 const CartContainer = styled.div`
     position: relative;
+    color: black;
 `;
 
 const NameDiv = styled.div`
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #831843;
 `;
 
 export {Header};

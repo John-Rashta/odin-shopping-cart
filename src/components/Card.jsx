@@ -27,11 +27,16 @@ function Card({name, price, image, id, addCart}) {
         <CardContainer>
             <SubContainer>
                 <ImageContainer src={image} alt={name}/>
-                <NameContainer>{name}
-                <p>{price}$ </p>
+                <NameContainer>
+                    <div>
+                        {name}
+                    </div>
+                    <PriceContainer>
+                        {price}$ 
+                    </PriceContainer>
                 </NameContainer>
             </SubContainer>
-            <SubContainer>
+            <BottomContainer>
                 <AmountContainer>
                     <QuantityButton onClick={increaseAmount} >&#x25B2;</QuantityButton>
                     <InputContainer
@@ -54,7 +59,7 @@ function Card({name, price, image, id, addCart}) {
                     }
                 }
                 >Add to Cart</CartButton>
-            </SubContainer>
+            </BottomContainer>
         </CardContainer>
     )
 
@@ -73,37 +78,79 @@ const CardContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
+    border: solid #a21caf;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    background-color: #fecdd3;
+    
 
 `;
 
 const AmountContainer = styled.div`
     display: flex;
+    
 `;
 
 const SubContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 15px;
+    width: 100%;
+    background-color: white;
+    padding-top: 10px;
+    flex-grow: 1;
+`;
+
+const BottomContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    background-color: #fecdd3;
+    padding-top: 10px;
+
 `;
 
 const NameContainer = styled.h3`
     text-align: center;
+    border-top: solid black;
+    border-bottom: solid black;
+    width: 100%;
+    background-color: #fdf2f8;
+    margin: 0;
+    flex-grow: 1;
 `;
 
 const InputContainer = styled.input`
     width: 40px;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    background-color: #fdf4ff;
+    border-radius: 5px;
+    border-color: #e11d48;
+    box-shadow: none;
+    &:focus {
+        outline: none;
+    }
 
 `;
 
 const QuantityButton = styled.button`
     transform: scale(0.8);
+    background-color: #ec4899;
+    &:focus {
+        outline: none;
+    }
 `;
 
 const CartButton = styled.button`
+    background-color: #fb7185;
+    &:focus {
+        outline: none;
+    }
 
 `;
 
@@ -111,6 +158,13 @@ const ImageContainer = styled.img`
     height: 200px;
     width: 200px;
     object-fit: contain;
+    background-color: transparent;
+`;
+
+const PriceContainer = styled.p`
+    font-size: 1.1rem;
+    font-weight: 500;
+
 `;
 
 export {Card};

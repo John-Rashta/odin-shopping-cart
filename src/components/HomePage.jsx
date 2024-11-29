@@ -5,9 +5,11 @@ function HomePage() {
 
     return (
         <MainContainer>
-            <h1>Welcome to Something Something Shop</h1>
+            <HeaderContainer>Welcome to Something Something Shop</HeaderContainer>
             <EnjoyContainer>Enjoy your Shopping!</EnjoyContainer>
-            <Link style={{fontSize:"1.5rem"}} to={{pathname:"/shop"}}>Start Shopping</Link>
+            <LinkContainer>
+                <Link style={{fontSize:"1.5rem", color: "#6d28d9"}} to={{pathname:"/shop"}}>Start Shopping</Link>
+            </LinkContainer>
         </MainContainer>
 
         
@@ -25,6 +27,17 @@ const MainContainer = styled.main`
 
 const EnjoyContainer = styled.h2`
     font-size: 2rem;
+    color: #404040;
+`;
+
+const LinkContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const HeaderContainer = styled.h1`
+    color: black;
 `;
 
 export {HomePage};

@@ -53,12 +53,15 @@ const MiniCardContainer = styled.div`
     position: absolute;
     right: 0;
     gap: 10px;
-    padding-top: 10px;
+    padding: 10px;
+    background-color: #fca5a5;
+    border: solid #db2777;
 
 `;
 
 const TotalContainer = styled.div`
     text-align: center;
+    font-size: 1.05rem;
 `;
 
 const CheckoutContainer = styled.div`
@@ -68,6 +71,7 @@ const CheckoutContainer = styled.div`
 `;
 
 const CheckoutButton= styled.button`
+    background-color: #ffe4e6;
 `;
 
 const CartContainer = styled.div`

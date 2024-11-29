@@ -40,12 +40,16 @@ const MiniCardStyle = styled.div`
     align-items: center;
     gap: 15px;
     justify-content: space-between;
+    border-bottom: 2px solid;
 
 `;
 
 const ButtonDiv = styled.div`
     display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px;
+    gap: 5px;
     
 `;
 
@@ -62,8 +66,12 @@ const NameDiv = styled.h4`
 
 const QuantityButton = styled.button`
     border-radius: 25px;
-    transform: scale(0.8);
-
+    padding: 0 9px;
+    font-size: 1.5rem;
+    background-color: #fb7185;
+    &:focus {
+        outline: none;
+    }
 `;
 
 export {MiniCard};

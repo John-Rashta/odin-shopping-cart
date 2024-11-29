@@ -36,6 +36,7 @@ const ProductsContainer = styled.div`
 const TopContainer = styled.h2`
     text-align: center;
     font-size: 2rem;
+    color: black;
 `;
 
 export {ShoppingPage};
