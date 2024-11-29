@@ -13,7 +13,7 @@ describe("App component", () => {
     it("renders cart properly", async () => {
         render(<App />, {wrapper: BrowserRouter});
         const user = userEvent.setup();
-        const showButton = screen.getByText("Show Cart");
+        const showButton = screen.getByText("Cart");
 
         await user.click(showButton);
 
